@@ -29,6 +29,7 @@ export default `
     --light-sea-green: #21baa6;
     --amazonite: #03d2b6;
     --steel-blue: #607D8B;
+    --medium-sky-blue: #73DAF5;
 
     --pastel-green: #7bd37c;
     --sunset-orange: #ff5d5d;
@@ -37,6 +38,7 @@ export default `
 
     --white: #fff;
     --white-smoke: #f5f5f5;
+    --azureish-white: #d5f0f7;
     --snow: #fafafa;
     --isabelline: #eee;
     --lavender: #e2e7f9;
@@ -122,8 +124,6 @@ export default `
   }
   table {
     border-collapse: collapse;
-    table-layout: fixed;
-    text-align: center;
     width: 100%;
   }
   th {
