@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "develop": "webpack-dev-server --config webpack.dev.js --progress",
-    "production": "rm build -rf && webpack --config webpack.prod.js",
-    "production:preview": "http-server build"
+    "production": "rimraf ./build && webpack --config webpack.prod.js",
+    "production:preview": "http-server ./build"
   },
   "dependencies": {
     "axios": "^0.20.0-0",
