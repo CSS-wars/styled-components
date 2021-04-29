@@ -8,7 +8,7 @@ import Button from '../../components/Button'
 
 import { updateUrl } from './shared/helpers'
 import { STYLE_HEADER_HEIGHT, STYLE_HEADER_HEIGHT_SM, STYLE_HEADER_ITEMS_VERTICAL_PADDING } from './shared/styles'
-import { UrlParams } from '../../constants'
+import { UrlParams } from '../../shared'
 
 const CN_PAGE_HEADER = 'page-header'
 

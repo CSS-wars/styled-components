@@ -2,7 +2,7 @@ import React, { memo, FC } from 'react'
 import styled from 'styled-components'
 import { BOX_SHADOW_LIGHT } from '../styles'
 import logo from '../assets/logo.png'
-import { THEMES } from '../constants/themes'
+import { Themes } from '../shared/enums'
 import { Dropdown, CN_DROPDOWN_CHEVRON } from '../components/form'
 
 import { STYLE_HEADER_HEIGHT } from './styles'
@@ -47,7 +47,7 @@ const Header: FC<Props> = ({ activeTheme, setActiveTheme }) => (
       <Logo src={logo} />
     </LogoLink>
     <DropdownStyled
-      list={THEMES}
+      list={Object.values(Themes)}
       activeItem={activeTheme}
       placeholder="Theme"
       onItemSelect={selectedTheme => setActiveTheme(selectedTheme)}

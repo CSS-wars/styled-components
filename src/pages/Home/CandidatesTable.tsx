@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { media, SCROLLBARS_MIN_LIGHT } from '../../styles'
 
 import { STYLE_HEADER_HEIGHT, STYLE_HEADER_HEIGHT_SM } from './shared/styles'
-import { TABLE_HEADERS, SORT_ASC } from './shared/constants'
+import { TABLE_HEADERS } from './shared/constants'
+import { SortDirections } from './shared/enums'
 import { Candidate } from './shared/types'
-import { UrlParams } from '../../constants'
+import { UrlParams } from '../../shared'
 
 const STYLE_FIRST_CELL = `
   z-index: 1;
@@ -103,7 +104,7 @@ const CandidatesTable: FC<IProps> = ({ urlParams, candidatesFiltered, onSortTogg
               <CellHeader
                 key={id}
                 isActiveSort={sortedColumnId === id}
-                isAsc={sortDirection === SORT_ASC}
+                isAsc={sortDirection === SortDirections.asc}
                 onClick={() => onSortToggle(id)}
               >
                 {displayName}

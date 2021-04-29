@@ -1,8 +1,8 @@
 import { History, LocationState } from "history";
 
 import { homePath } from '../../../Application/paths'
-import { UrlParams } from '../../../constants'
-import { COLUMN_ID_NAME, SORT_ASC, COLUMN_ID_STATUS, COLUMN_ID_POSITION } from "./constants";
+import { UrlParams } from '../../../shared'
+import { ColumnIds, SortDirections } from "./enums";
 
 export function getUrlParams(urlSearch: string): UrlParams {
   const urlSearchParams = new URLSearchParams(urlSearch)
@@ -31,9 +31,9 @@ export function updateUrl({ urlParams, history }: { urlParams: UrlParams; histor
   })
 }
 
-export const sortByColumnId = (columnId: string = COLUMN_ID_NAME, sortDirection: string = SORT_ASC) => {
+export const sortByColumnId = (columnId: string = ColumnIds.name, sortDirection: string = SortDirections.asc) => {
   interface Compare { [columnId: string]: string }
-  const isAsc = sortDirection === SORT_ASC
+  const isAsc = sortDirection === SortDirections.asc
 
   return ((a: Compare, b: Compare): number => {
     if (a[columnId] > b[columnId]) return isAsc ? 1 : -1
@@ -50,9 +50,9 @@ export const filterBySearchQuery = (searchText: string) =>
     generateRegex(searchText).test(item.name)
 
 export const filterByPosition = (position: string) =>
-  (item: { [COLUMN_ID_POSITION]: string }): boolean =>
-    !position || item[COLUMN_ID_POSITION] === position
+  (item: { [ColumnIds.position]: string }): boolean =>
+    !position || item[ColumnIds.position] === position
 
 export const filterByStatus = (status: string) =>
-  (item: { [COLUMN_ID_STATUS]: string }): boolean =>
-    !status || item[COLUMN_ID_STATUS] === status
+  (item: { [ColumnIds.status]: string }): boolean =>
+    !status || item[ColumnIds.status] === status

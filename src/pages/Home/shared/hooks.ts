@@ -10,11 +10,8 @@ import {
   getUrlParams,
 } from './helpers'
 import {
-  COLUMN_ID_POSITION,
-  COLUMN_ID_STATUS,
-  SORT_ASC,
-  SORT_DESC,
-} from './constants'
+  ColumnIds, SortDirections
+} from './enums'
 import candidatesData from '../../../api/candidatesData.json'
 
 export const useHome = () => {
@@ -34,18 +31,18 @@ export const useHome = () => {
     getData()
   }, [])
 
-  async function getData() {
+  function getData() {
     const { data } = candidatesData
     const responseSorted = data.sort(sortByColumnId(sortedColumnId, sortDirection))
     setCandidates(responseSorted)
-    setPositions([...new Set(data.map((x: { [COLUMN_ID_POSITION]: string }) => x[COLUMN_ID_POSITION]))])
-    setStatuses([...new Set(data.map((x: { [COLUMN_ID_STATUS]: string }) => x[COLUMN_ID_STATUS]))])
+    setPositions([...new Set(data.map((x: { [ColumnIds.position]: string }) => x[ColumnIds.position]))])
+    setStatuses([...new Set(data.map((x: { [ColumnIds.status]: string }) => x[ColumnIds.status]))])
   }
 
-  const onSortToggle = (columnIdSelected: string): void => {
+  function onSortToggle(columnIdSelected: string) {
     const { sortedColumnId, sortDirection } = urlParams
     const determineSort = ((sodtDirection: string, flip?: boolean): string => (
-      sortDirection === SORT_ASC && flip ? SORT_DESC : SORT_ASC
+      sortDirection === SortDirections.asc && flip ? SortDirections.desc : SortDirections.asc
     ))
     const newSortDirection = columnIdSelected === sortedColumnId
       ? determineSort(sortDirection, true)
